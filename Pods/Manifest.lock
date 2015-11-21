@@ -1,0 +1,15 @@
+PODS:
+  - ChameleonFramework (2.0.4):
+    - ChameleonFramework/Default (= 2.0.4)
+  - ChameleonFramework/Default (2.0.4)
+  - Firebase (2.4.3)
+
+DEPENDENCIES:
+  - ChameleonFramework
+  - Firebase (>= 2.4.3)
+
+SPEC CHECKSUMS:
+  ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
+  Firebase: 48179995b561e2262c5d4060ecdffca45fbbff8b
+
+COCOAPODS: 0.39.0
