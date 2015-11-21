@@ -11,7 +11,6 @@
 		F74D38AA1C00DE4D00CC17ED /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D38A91C00DE4D00CC17ED /* SplitViewController.swift */; };
 		F74D38AC1C00E04400CC17ED /* PostsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D38AB1C00E04400CC17ED /* PostsNavigationController.swift */; };
 		F74D38AE1C00E7A500CC17ED /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D38AD1C00E7A500CC17ED /* Groups.swift */; };
-		F74D38B01C00E8F000CC17ED /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D38AF1C00E8F000CC17ED /* Posts.swift */; };
 		F7A6E8841C00CC200098F1C4 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A6E8831C00CC200098F1C4 /* GroupsTableViewController.swift */; };
 		F7D813681C00C2890093C6A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D813671C00C2890093C6A8 /* AppDelegate.swift */; };
 		F7D8136F1C00C2890093C6A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D8136D1C00C2890093C6A8 /* Main.storyboard */; };
@@ -47,7 +46,6 @@
 		F74D38A91C00DE4D00CC17ED /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		F74D38AB1C00E04400CC17ED /* PostsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsNavigationController.swift; sourceTree = "<group>"; };
 		F74D38AD1C00E7A500CC17ED /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
-		F74D38AF1C00E8F000CC17ED /* Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		F7A6E8831C00CC200098F1C4 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		F7D813641C00C2890093C6A8 /* IntraFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntraFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7D813671C00C2890093C6A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				F74D38AD1C00E7A500CC17ED /* Groups.swift */,
-				F74D38AF1C00E8F000CC17ED /* Posts.swift */,
 				F7D813671C00C2890093C6A8 /* AppDelegate.swift */,
 				F7A6E8831C00CC200098F1C4 /* GroupsTableViewController.swift */,
 				F74D38A91C00DE4D00CC17ED /* SplitViewController.swift */,
@@ -350,7 +347,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7D813681C00C2890093C6A8 /* AppDelegate.swift in Sources */,
-				F74D38B01C00E8F000CC17ED /* Posts.swift in Sources */,
 				F7A6E8841C00CC200098F1C4 /* GroupsTableViewController.swift in Sources */,
 				F72E4B791C00D46300294CF0 /* PostsTableViewController.swift in Sources */,
 				F74D38AC1C00E04400CC17ED /* PostsNavigationController.swift in Sources */,

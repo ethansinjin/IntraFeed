@@ -109,6 +109,7 @@ class GroupsTableViewController: UITableViewController, UISplitViewControllerDel
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         collapseDetailViewController = false
         Groups.sharedInstance.selectedGroupID = Groups.sharedInstance.groupIDs[indexPath.row]
+        Groups.sharedInstance.selectedGroupTitle = Groups.sharedInstance.groups[indexPath.row]["text"] as! String
     }
     
     func groupsUpdated() {

@@ -11,29 +11,61 @@ import ChameleonFramework
 import Firebase
 
 class PostsTableViewController: UITableViewController {
-
+    
+    var posts:[AnyObject] = []
+    var postIDs:[String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        if (self.navigationController?.splitViewController?.collapsed == false) {
+//            
+//            self.navigationItem.leftBarButtonItem = self.navigationController?.splitViewController?.displayModeButtonItem()
+//        }
+        
+        //self.title = Groups.sharedInstance.selectedGroupTitle
         self.navigationController?.navigationBar.barTintColor = UIColor.flatWatermelonColor()
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         
-        navigationController?.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-        navigationItem.leftItemsSupplementBackButton = true
-
+       // navigationController?.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+        //navigationItem.leftItemsSupplementBackButton = true
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // List the names of all Mary's groups
+        let ref = Firebase(url: "https://intrafeed.firebaseio.com/")
+        
+        let selectedGroup = Groups.sharedInstance.selectedGroupID
+        
+        // fetch a list of Posts
+        ref.childByAppendingPath("Groups/\(selectedGroup)/Posts").observeEventType(.ChildAdded, withBlock: {snapshot in
+            // for each post, fetch the name and print it
+            let postKey = snapshot.key
+            ref.childByAppendingPath("Posts/\(postKey)").observeSingleEventOfType(.Value, withBlock: {snapshot in
+                self.posts.append(snapshot.value)
+                self.postIDs.append(snapshot.key)
+                self.handleReload()
+            })
+        })
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    func handleReload() {
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -41,18 +73,18 @@ class PostsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.posts.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("post", forIndexPath: indexPath)
+        cell.textLabel?.text = self.posts[indexPath.row]["text"] as? String
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

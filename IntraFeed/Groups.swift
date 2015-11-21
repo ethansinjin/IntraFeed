@@ -21,7 +21,7 @@ class Groups {
     var groupIDs:[String] = []
     let firebaseGroups = Firebase(url:"https://intrafeed.firebaseio.com/Groups")
     var selectedGroupID:String = ""
-    
+    var selectedGroupTitle:String = ""
     init() {
         self.firebaseGroups.observeEventType(FEventType.ChildAdded, withBlock: {
             snapshot in
