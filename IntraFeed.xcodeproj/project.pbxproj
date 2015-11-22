@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F7154CF21C010E1900B32AA6 /* CreatePostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7154CF11C010E1900B32AA6 /* CreatePostTableViewController.swift */; };
 		F72E4B791C00D46300294CF0 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72E4B781C00D46300294CF0 /* PostsTableViewController.swift */; };
+		F749ACB21C0220740083BE92 /* CommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F749ACB11C0220740083BE92 /* CommentsTableViewController.swift */; };
+		F749ACB41C0228450083BE92 /* IntraFeedLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F749ACB31C0228450083BE92 /* IntraFeedLogo.png */; };
 		F74D38AA1C00DE4D00CC17ED /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D38A91C00DE4D00CC17ED /* SplitViewController.swift */; };
 		F74D38AC1C00E04400CC17ED /* PostsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D38AB1C00E04400CC17ED /* PostsNavigationController.swift */; };
 		F74D38AE1C00E7A500CC17ED /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D38AD1C00E7A500CC17ED /* Groups.swift */; };
@@ -50,6 +52,8 @@
 		F0099234275E8B5C744BCC63 /* Pods-IntraFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-IntraFeed/Pods-IntraFeed.release.xcconfig"; sourceTree = "<group>"; };
 		F7154CF11C010E1900B32AA6 /* CreatePostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostTableViewController.swift; sourceTree = "<group>"; };
 		F72E4B781C00D46300294CF0 /* PostsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
+		F749ACB11C0220740083BE92 /* CommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsTableViewController.swift; sourceTree = "<group>"; };
+		F749ACB31C0228450083BE92 /* IntraFeedLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IntraFeedLogo.png; sourceTree = "<group>"; };
 		F74D38A91C00DE4D00CC17ED /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		F74D38AB1C00E04400CC17ED /* PostsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsNavigationController.swift; sourceTree = "<group>"; };
 		F74D38AD1C00E7A500CC17ED /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
@@ -152,8 +156,10 @@
 				F77A27C31C01049B00DFAD54 /* PostDetailViewController.swift */,
 				F777092E1C0114B600EC090A /* Login.storyboard */,
 				F7D8136D1C00C2890093C6A8 /* Main.storyboard */,
+				F749ACB11C0220740083BE92 /* CommentsTableViewController.swift */,
 				F7154CF11C010E1900B32AA6 /* CreatePostTableViewController.swift */,
 				F77462991C00FF4800C89230 /* PostTableViewCell.swift */,
+				F749ACB31C0228450083BE92 /* IntraFeedLogo.png */,
 				F7D813701C00C2890093C6A8 /* Assets.xcassets */,
 				F7D813721C00C2890093C6A8 /* LaunchScreen.storyboard */,
 				F7D813751C00C2890093C6A8 /* Info.plist */,
@@ -292,6 +298,7 @@
 				F777092F1C0114B600EC090A /* Login.storyboard in Resources */,
 				F7D813741C00C2890093C6A8 /* LaunchScreen.storyboard in Resources */,
 				F7D813711C00C2890093C6A8 /* Assets.xcassets in Resources */,
+				F749ACB41C0228450083BE92 /* IntraFeedLogo.png in Resources */,
 				F7D8136F1C00C2890093C6A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +383,7 @@
 				F74D38AA1C00DE4D00CC17ED /* SplitViewController.swift in Sources */,
 				F74D38AE1C00E7A500CC17ED /* Groups.swift in Sources */,
 				F777092D1C01148900EC090A /* User.swift in Sources */,
+				F749ACB21C0220740083BE92 /* CommentsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

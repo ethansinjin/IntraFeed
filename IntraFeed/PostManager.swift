@@ -70,4 +70,30 @@ class PostManager {
         downvoteRef.setValue(true)
         
     }
+    
+    //comments are always anonymous
+    func commentOnPost(postID:String, text:String) {
+        
+        let userID = User.sharedInstance.currentUserKey
+        let date = NSDate().timeIntervalSince1970
+        
+        let ref = Firebase(url: "https://intrafeed.firebaseio.com/")
+        
+        let postRef = ref.childByAppendingPath("Posts/\(postID)")
+        let commentsRef = postRef.childByAppendingPath("Commments")
+        let comment = [
+            "date": date,
+            "text": text,
+            "user" : userID,
+            "anonymous" : false
+        ]
+        
+        let comment1Ref = commentsRef.childByAutoId()
+        comment1Ref.setValue(comment)
+        
+        let commentKey:String = comment1Ref.key
+        
+        let users = ref.childByAppendingPath("Users/\(userID)/Comments/\(commentKey)")
+        users.setValue(true)
+    }
 }

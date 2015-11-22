@@ -47,25 +47,24 @@ class PostsTableViewController: UITableViewController {
             // for each post, fetch the name and print it
             let postKey = snapshot.key
             ref.childByAppendingPath("Posts/\(postKey)").observeSingleEventOfType(.Value, withBlock: {snapshot in
+                print(snapshot.value)
                 self.posts.append(snapshot.value)
                 self.postIDs.append(snapshot.key)
                 self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
             })
-            
-            ref.childByAppendingPath("Posts/\(postKey)").observeEventType(.ChildChanged, withBlock: {snapshot in
-                for (i, key) in self.postIDs.enumerate() {
-                    if(key == snapshot.key){
-                        self.posts[i] = snapshot.value
-                        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
-                        break
-                    }
-                }
-                
-                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
-            })
-
         })
         
+        ref.childByAppendingPath("Posts").observeEventType(.ChildChanged, withBlock: {snapshot in
+            print(snapshot.key)
+            print(snapshot.value)
+            if(self.postIDs.count > 0 ) {
+                if let index = self.postIDs.indexOf(snapshot.key) {
+                    self.posts[index] = snapshot.value
+                    
+                    self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
+                }
+            }
+        })
 
     }
     
@@ -98,21 +97,37 @@ class PostsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("post", forIndexPath: indexPath) as! PostTableViewCell
-        cell.postLabel.text = self.posts[indexPath.row]["text"] as? String
-        cell.postID = self.postIDs[indexPath.row]
         
-        let ups = self.posts[indexPath.row]["Upvotes"] as? [String:Bool]
-        let downs = self.posts[indexPath.row]["Downvotes"] as? [String:Bool]
+        let position = (self.posts.count - 1) - (indexPath.row)
+        cell.postLabel.text = self.posts[position]["text"] as? String
+        cell.postID = self.postIDs[position]
+        
+        let ups = self.posts[position]["Upvotes"] as? [String:Bool]
+        let downs = self.posts[position]["Downvotes"] as? [String:Bool]
+        
+        
+            cell.downButton.tintColor = UIColor.blackColor()
+            cell.upButton.tintColor = UIColor.blackColor()
+            cell.upButton.selected = false
+            cell.downButton.selected = false
+            cell.upButton.enabled = true
+            cell.downButton.enabled = true
+        
         
         if let realUps = ups {
             if(realUps.keys.contains(User.sharedInstance.currentUserKey)){
+                
+                print("Upvoting: \(self.posts[position]["text"])")
+                
                 cell.upButton.tintColor = UIColor.flatGreenColor()
                 cell.downButton.tintColor = UIColor.lightGrayColor()
                 cell.upButton.selected = true
                 cell.upButton.enabled = false
                 cell.downButton.enabled = false
             }
-        } else if let realDowns = downs {
+        }
+        
+        if let realDowns = downs {
             if (realDowns.keys.contains(User.sharedInstance.currentUserKey)) {
                 cell.downButton.tintColor = UIColor.flatRedColor()
                 cell.upButton.tintColor = UIColor.lightGrayColor()
@@ -143,10 +158,13 @@ class PostsTableViewController: UITableViewController {
     
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let position = (self.posts.count - 1) - (indexPath.row)
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let view = storyboard.instantiateViewControllerWithIdentifier("postDetail") as! PostDetailViewController
-        view.postObject = self.posts[indexPath.row]
-        view.postID = self.postIDs[indexPath.row]
+        view.postObject = self.posts[position]
+        view.postID = self.postIDs[position]
         self.navigationController?.pushViewController(view, animated: true)
     }
     /*

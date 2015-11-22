@@ -20,6 +20,7 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var upScoreLabel: UILabel!
     @IBOutlet weak var downScoreLabel: UILabel!
     
+    @IBOutlet weak var containerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +44,9 @@ class PostDetailViewController: UIViewController {
                     self.upButton.enabled = false
                     self.downButton.enabled = false
                 }
-            } else if let realDowns = downs {
+            }
+            
+            if let realDowns = downs {
                 if(realDowns.keys.contains(User.sharedInstance.currentUserKey)) {
                     self.downButton.tintColor = UIColor.flatRedColor()
                     self.upButton.tintColor = UIColor.lightGrayColor()
@@ -124,14 +127,17 @@ class PostDetailViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "comments" {
+            
+        }
     }
-    */
+    
 
 }

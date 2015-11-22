@@ -7,7 +7,8 @@ target 'IntraFeed' do
 
   pod 'ChameleonFramework'
   pod 'Firebase', '>= 2.4.3'
-  
+  pod 'SlackTextViewController'
+
 end
 
 target 'IntraFeedTests' do

@@ -3,13 +3,16 @@ PODS:
     - ChameleonFramework/Default (= 2.0.4)
   - ChameleonFramework/Default (2.0.4)
   - Firebase (2.4.3)
+  - SlackTextViewController (1.7.2)
 
 DEPENDENCIES:
   - ChameleonFramework
   - Firebase (>= 2.4.3)
+  - SlackTextViewController
 
 SPEC CHECKSUMS:
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   Firebase: 48179995b561e2262c5d4060ecdffca45fbbff8b
+  SlackTextViewController: 1f4e8f68c156ef93de73fd422db2b8d5d5b0f4e7
 
 COCOAPODS: 0.39.0
