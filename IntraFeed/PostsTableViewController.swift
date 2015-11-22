@@ -49,9 +49,24 @@ class PostsTableViewController: UITableViewController {
             ref.childByAppendingPath("Posts/\(postKey)").observeSingleEventOfType(.Value, withBlock: {snapshot in
                 self.posts.append(snapshot.value)
                 self.postIDs.append(snapshot.key)
-                self.handleReload()
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
             })
+            
+            ref.childByAppendingPath("Posts/\(postKey)").observeEventType(.ChildChanged, withBlock: {snapshot in
+                for (i, key) in self.postIDs.enumerate() {
+                    if(key == snapshot.key){
+                        self.posts[i] = snapshot.value
+                        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
+                        break
+                    }
+                }
+                
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
+            })
+
         })
+        
+
     }
     
     override func viewDidAppear(animated: Bool) {
