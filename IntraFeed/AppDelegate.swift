@@ -16,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //stupid iOS keyboard lag workaround
+//        let lagFreeField = UITextField()
+//        self.window?.addSubview(lagFreeField)
+//        lagFreeField.becomeFirstResponder()
+//        lagFreeField.resignFirstResponder()
+//        lagFreeField.removeFromSuperview()
+
         self.window?.tintColor = UIColor.whiteColor()
         
         if let splitViewController = self.window!.rootViewController as? UISplitViewController {

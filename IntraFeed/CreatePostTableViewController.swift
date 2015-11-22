@@ -1,36 +1,41 @@
 //
-//  GroupsTableViewController.swift
-//  
+//  PostTableViewController.swift
+//  IntraFeed
 //
 //  Created by Ethan Gill on 11/21/15.
-//
+//  Copyright © 2015 Ethan Gill. All rights reserved.
 //
 
 import UIKit
-import Firebase
 import ChameleonFramework
+class CreatePostTableViewController: UITableViewController {
 
-
-class GroupsTableViewController: UITableViewController, UISplitViewControllerDelegate, GroupsDelegate {
-    var collapseDetailViewController = true
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var anonSwitch: UISwitch!
     
+    @IBAction func cancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
+    @IBAction func post(sender: AnyObject) {
+        PostManager.sharedInstance.sendPost(textView.text, anonymous: anonSwitch.enabled, group: Groups.sharedInstance.selectedGroupID)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Groups.sharedInstance.delegate = self
-        splitViewController?.delegate = self
-        
-        self.navigationItem.title = "Groups"
-        self.navigationController?.navigationBar.barTintColor = UIColor.flatWatermelonColor()
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        
+        self.textView.tintColor = UIColor.flatWatermelonColor()
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = true
+        // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.textView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,26 +45,15 @@ class GroupsTableViewController: UITableViewController, UISplitViewControllerDel
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Groups.sharedInstance.groups.count
-    }
-    
-    
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("group", forIndexPath: indexPath)
-        let data = Groups.sharedInstance.groups[indexPath.row]
-        
-        cell.textLabel?.text = data["text"] as? String
-        cell.detailTextLabel?.text = data["description"] as? String
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
         // Configure the cell...
 
         return cell
     }
-    
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -96,29 +90,14 @@ class GroupsTableViewController: UITableViewController, UISplitViewControllerDel
     }
     */
 
-
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        collapseDetailViewController = false
-        Groups.sharedInstance.selectedGroupID = Groups.sharedInstance.groupIDs[indexPath.row]
-        Groups.sharedInstance.selectedGroupTitle = Groups.sharedInstance.groups[indexPath.row]["text"] as! String
-    }
-    
-    func groupsUpdated() {
-        self.tableView.reloadData()
-    }
-    // MARK: - UISplitViewControllerDelegate
-    
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
-        return collapseDetailViewController
-    }
+    */
 
 }
